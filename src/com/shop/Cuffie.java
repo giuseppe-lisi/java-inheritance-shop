@@ -33,5 +33,6 @@ public class Cuffie extends Prodotto {
     public String getCableOrBt() {
         return this.cableOrBt;
     }
+
 }
 
