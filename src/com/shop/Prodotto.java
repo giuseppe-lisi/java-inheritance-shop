@@ -25,23 +25,23 @@ public class Prodotto {
         this.nome = nome;
     }
 
-    public String getNome(String nome) {
-        return this.nome = nome;
+    public String getNome() {
+        return this.nome;
     }
 
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
-    public String getMarca(String marca) {
-        return this.marca = marca;
+    public String getMarca() {
+        return this.marca;
     }
 
     public void setPrezzo(BigDecimal prezzo) {
         this.prezzo = prezzo;
     }
 
-    public BigDecimal getPrezzo(BigDecimal prezzo) {
+    public BigDecimal getPrezzo() {
         return this.prezzo;
     }
 
@@ -49,7 +49,7 @@ public class Prodotto {
         this.iva = iva;
     }
 
-    public BigDecimal getIva(BigDecimal iva) {
+    public BigDecimal getIva() {
         return this.iva;
     }
 }
