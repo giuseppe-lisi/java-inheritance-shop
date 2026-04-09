@@ -8,5 +8,12 @@ public class App {
 
         System.out.println(telefono.getCodice());
         
+        // non è possibile modificare direttamente la proprietà codice
+        // ereditata dalla superclasse Prodotto in quanto questa proprietà
+        // è protected, quindi ha scope di classe (e sottoclasse) e pkg
+        // telefono.codice = 123; --> proprietà codice non è visibile
+
+        System.out.println(telefono.getMarca());
+
     }
 }
