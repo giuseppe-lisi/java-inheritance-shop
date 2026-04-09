@@ -14,6 +14,7 @@ public class App {
         // telefono.codice = 123; --> proprietà codice non è visibile
 
         System.out.println(telefono.getMarca());
+        System.out.println(telefono.getPrezzo());
 
     }
 }
