@@ -14,7 +14,9 @@ public class Smartphone extends Prodotto {
 
     // metodi set get
     public void setImei(int imei) {
-        this.imei = imei;
+        if (imei > 0) {
+            this.imei = imei;
+        }
     }
 
     public int getImei() {
@@ -22,7 +24,9 @@ public class Smartphone extends Prodotto {
     }
 
     public void setMemoria(int memoria) {
-        this.memoria = memoria;
+        if (memoria > 0) {
+            this.memoria = memoria;
+        }
     }
 
     public int getMemoria() {
