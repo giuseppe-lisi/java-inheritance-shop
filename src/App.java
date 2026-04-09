@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 
+import com.shop.Cuffie;
 import com.shop.Smartphone;
 import com.shop.Televisore;
 
@@ -9,6 +10,8 @@ public class App {
 
         Televisore televisore = new Televisore(12345, "Tv Figa", "Samsung", new BigDecimal(599), new BigDecimal(0.22), 1.00f, 1.50f, true);
 
+        Cuffie cuffie = new Cuffie(76214, "Cuffie Belle", "Bose", new BigDecimal(149.99), new BigDecimal(0.22), "Nere", "Entrambi");
+
         System.out.println(telefono.getCodice());
         
         // non è possibile modificare direttamente la proprietà codice
@@ -17,6 +20,8 @@ public class App {
         // telefono.codice = 123; --> proprietà codice non è visibile
 
         System.out.println(televisore.getIsSmartTv());
+
+        System.out.println(cuffie.getCableOrBt() + " - " + cuffie.getColore());
 
     }
 }
