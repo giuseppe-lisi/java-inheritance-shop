@@ -25,7 +25,7 @@ public class Cuffie extends Prodotto {
 
     public void setCableOrBt(String cableOrBt) {
         String lowerCableBt = cableOrBt.toLowerCase();
-        if (lowerCableBt != null && (lowerCableBt == "cavo" || lowerCableBt == "bluetooth" || lowerCableBt == "entrambi")) {
+        if (lowerCableBt != null && (lowerCableBt.equals("cavo") || lowerCableBt.equals("bluetooth") || lowerCableBt.equals("entrambi"))) {
             this.cableOrBt = lowerCableBt;
         }
     }
