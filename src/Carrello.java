@@ -52,7 +52,6 @@ public class Carrello {
                     Televisore tv = new Televisore(codiceTv, prezzoTv, iva, pollici, isSmartTv);
 
                     System.out.println("Hai inserito nel carrello un televisore con le seguenti caratteristiche: ");
-                    System.out.println(tv.getPrezzo());
                     tv.setDiscountedPrice(hasFidelity);
                     System.out.println(tv.toString());
 
@@ -100,7 +99,9 @@ public class Carrello {
                     Smartphone telefono = new Smartphone(codiceSmartphone, prezzoSmartphone, iva, nome, marca, imei,
                             memoria);
 
+                            
                     System.out.println("Hai inserito nel carrello uno smartphone con le seguenti caratteristiche: ");
+                    telefono.setDiscountedPrice(hasFidelity);
                     System.out.println(telefono.toString());
 
                     carrello[i] = telefono;

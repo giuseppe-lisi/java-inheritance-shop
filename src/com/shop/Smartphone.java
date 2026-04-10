@@ -1,6 +1,7 @@
 package com.shop;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Smartphone extends Prodotto {
     private int imei;
@@ -37,5 +38,18 @@ public class Smartphone extends Prodotto {
     public String toString() {    
         String message = "\n#----------#" + "\nCodice prodotto: " + this.codice + "\nMarca: " + this.marca + "\nModello: " + this.nome + "\nCodice imei: " + this.imei + "\nGb di memoria: " + this.memoria + "\nPrezzo + iva: " + this.prezzo + "\n#----------#"; 
         return message;
+    }
+
+    @Override
+    public void setDiscountedPrice(boolean hasFidelity) {
+        // prezzo comprensivo di iva
+        this.prezzo = this.prezzo.add(this.prezzo.multiply(this.iva));
+        // se l'utente ha scelto un telefono con memoria inferiore a 32 gb
+        // e ha la fidelity card
+        if (this.memoria <= 32 && hasFidelity) {
+            this.prezzo = this.prezzo.subtract(this.prezzo.multiply(new BigDecimal(0.05))).setScale(2, RoundingMode.HALF_EVEN);
+        } else {
+            super.setDiscountedPrice(hasFidelity);
+        }
     }
 }
