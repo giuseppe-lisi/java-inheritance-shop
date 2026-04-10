@@ -32,4 +32,5 @@ public class Smartphone extends Prodotto {
     public int getMemoria() {
         return this.memoria;
     }
+
 }
