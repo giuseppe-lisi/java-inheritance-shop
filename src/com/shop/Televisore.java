@@ -3,37 +3,24 @@ package com.shop;
 import java.math.BigDecimal;
 
 public class Televisore extends Prodotto {
-    private float larghezza;
-    private float lunghezza;
+    private float pollici;
     private boolean isSmartTv;
 
-    public Televisore(int codice, String nome, String marca, BigDecimal prezzo, BigDecimal iva, float larghezza,
-            float lunghezza, boolean isSmartTv) {
-        super(codice, nome, marca, prezzo, iva);
-        this.larghezza = larghezza;
-        this.lunghezza = lunghezza;
+    public Televisore(int codice, BigDecimal prezzo, BigDecimal iva, float pollici, boolean isSmartTv) {
+        super(codice, prezzo, iva);
+        this.pollici = pollici;
         this.isSmartTv = isSmartTv;
     }
 
     // setter e getter
-    public void setLarghezza(float larghezza) {
-        if (larghezza > 0) {
-            this.larghezza = larghezza;
+    public void setPollici(float pollici) {
+        if (pollici > 0) {
+            this.pollici = pollici;
         }
     }
 
-    public float getLarghezza() {
-        return this.larghezza;
-    }
-
-    public void setLunghezza(float lunghezza) {
-        if (lunghezza > 0) {
-            this.lunghezza = lunghezza;
-        }
-    }
-
-    public float getLunghezza() {
-        return this.lunghezza;
+    public float getPollici() {
+        return this.pollici;
     }
 
     public void setIsSmartTv(boolean isSmartTv) {
@@ -42,5 +29,11 @@ public class Televisore extends Prodotto {
 
     public boolean getIsSmartTv() {
         return this.isSmartTv;
+    }
+
+    @Override
+    public String toString() {    
+        String message = "Codice prodotto: " + this.codice + "\n Pollici: " + this.pollici + "\n È una smart tv: " + this.isSmartTv + "\n#----------#"; 
+        return message;
     }
 }

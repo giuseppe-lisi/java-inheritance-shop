@@ -6,8 +6,8 @@ public class Cuffie extends Prodotto {
     private String colore;
     private String cableOrBt;
 
-    public Cuffie(int codice, String nome, String marca, BigDecimal prezzo, BigDecimal iva, String colore, String cableOrBt) {
-        super(codice, nome, marca, prezzo, iva);
+    public Cuffie(int codice, BigDecimal prezzo, BigDecimal iva, String colore, String cableOrBt) {
+        super(codice, prezzo, iva);
         this.colore = colore;
         this.cableOrBt = cableOrBt;
     }
@@ -34,5 +34,10 @@ public class Cuffie extends Prodotto {
         return this.cableOrBt;
     }
 
+    @Override
+    public String toString() {    
+        String message = "Codice prodotto: " + this.codice + "\n Colore: " + this.colore + "\n Connessione: " + this.cableOrBt + "\n#----------#"; 
+        return message;
+    }
 }
 

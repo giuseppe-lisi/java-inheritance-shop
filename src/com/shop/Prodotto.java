@@ -1,5 +1,6 @@
 package com.shop;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Prodotto {
     protected int codice;
@@ -7,6 +8,12 @@ public class Prodotto {
     protected String marca;
     protected BigDecimal prezzo;
     protected BigDecimal iva;
+
+    public Prodotto(int codice, BigDecimal prezzo, BigDecimal iva) {
+        this.codice = codice;
+        this.prezzo = prezzo;
+        this.iva = iva;
+    }
 
     public Prodotto(int codice, String nome, String marca, BigDecimal prezzo, BigDecimal iva) {
         this.codice = codice;
@@ -51,5 +58,10 @@ public class Prodotto {
 
     public BigDecimal getIva() {
         return this.iva;
+    }
+
+    public String toString() {
+        String message = "Codice prodotto: " + this.codice + "\nNome prodotto: " + this.nome + "\nMarca: " + this.marca + "\nPrezzo: " + this.prezzo.setScale(2,RoundingMode.HALF_EVEN) + "\nIva: " + this.iva.setScale(2,RoundingMode.HALF_EVEN);
+        return message;
     }
 }

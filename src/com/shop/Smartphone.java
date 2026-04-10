@@ -6,8 +6,8 @@ public class Smartphone extends Prodotto {
     private int imei;
     private int memoria;
 
-    public Smartphone(int codice, String nome, String marca, BigDecimal prezzo, BigDecimal iva, int imei, int memoria) {
-        super(codice, nome, marca, prezzo, iva);
+    public Smartphone(int codice, BigDecimal prezzo, BigDecimal iva, String nome, String marca, int imei, int memoria) {
+        super(codice, prezzo, iva);
         this.imei = imei;
         this.memoria = memoria;
     }
@@ -33,4 +33,9 @@ public class Smartphone extends Prodotto {
         return this.memoria;
     }
 
+    @Override
+    public String toString() {    
+        String message = "Codice prodotto: " + this.codice + "\n Codice imei: " + this.imei + "\n Gb di memoria: " + this.memoria + "\n#----------#"; 
+        return message;
+    }
 }
