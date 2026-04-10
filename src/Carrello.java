@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import com.shop.Cuffie;
-import com.shop.Prodotto;
 import com.shop.Smartphone;
 import com.shop.Televisore;
 
@@ -65,9 +64,28 @@ public class Carrello {
 
                 break;
             case "smartphone":
+                int codiceSmartphone = rand.nextInt(50000);
+                int imei = rand.nextInt(999999);
+                System.out.println("Inserisci prezzo del telefono:");
+                BigDecimal prezzoSmartphone = in.nextBigDecimal();
+                // consuma \n del tasto invio... ok lo fa anche quì
+                in.nextLine();
+
+                System.out.println("Marca telefono? ");
+                String marca = in.nextLine();
                 
+                System.out.println("Modello telefono? ");
+                String nome = in.nextLine();
+                
+                System.out.println("Memoria telefono? ");
+                int memoria = in.nextInt();
+
+                Smartphone telefono = new Smartphone(codiceSmartphone, prezzoSmartphone, iva, nome, marca, imei, memoria);
+
+                System.out.println("Hai inserito nel carrello uno smartphone con le seguenti caratteristiche: ");
+                System.out.println(telefono.toString());
+
                 break;
-        
             default:
                 break;
         }
