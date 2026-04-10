@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 import com.shop.Cuffie;
+import com.shop.Prodotto;
 import com.shop.Smartphone;
 import com.shop.Televisore;
-
 
 public class Carrello {
     public static void main() {
@@ -14,83 +14,107 @@ public class Carrello {
         Random rand = new Random();
         Scanner in = new Scanner(System.in);
 
-        // array che rappresenta carrello
-        String[] carrello = new String[2];
-
+        
         // iva applicata al 22% su tutto
         BigDecimal iva = new BigDecimal(0.22).setScale(2, RoundingMode.HALF_EVEN);
+        
+        System.out.println("Quanti prodotti devi inserire nel carrello?");
+        int itemNum = in.nextInt();
+        in.nextLine();
 
-        System.out.println("Inserisci un prodotto nel carrello:\n(tv, smartphone, cuffie)");
-        String choice = in.nextLine();
+        // array che rappresenta carrello
+        Prodotto[] carrello = new Prodotto[itemNum];
 
-        switch (choice) {
-            case "tv":
-                int codiceTv = rand.nextInt(50000);
+        
+        // cicla in base al numero di oggetti che l'utente deve inserire nel carrello
+        for (int i = 0; i < carrello.length; i++) {
+            
+            System.out.println("Inserisci un prodotto nel carrello:\n(tv, smartphone, cuffie)");
+            String choice = in.nextLine();
 
-                System.out.println("Inserisci prezzo del televisore: ");
-                BigDecimal prezzoTv = in.nextBigDecimal();
+            switch (choice) {
+                case "tv":
+                    int codiceTv = rand.nextInt(50000);
 
-                System.out.println("Quanti pollici? ");
-                float pollici = in.nextFloat();
+                    System.out.println("Inserisci prezzo del televisore: ");
+                    BigDecimal prezzoTv = in.nextBigDecimal();
 
-                // tutti i televisori sopra i 32 pollici sono smartTv
-                boolean isSmartTv = pollici > 32;
+                    System.out.println("Quanti pollici? ");
+                    float pollici = in.nextFloat();
 
-                Televisore tv = new Televisore(codiceTv, prezzoTv, iva, pollici, isSmartTv);
+                    // tutti i televisori sopra i 32 pollici sono smartTv
+                    boolean isSmartTv = pollici > 32;
 
-                System.out.println("Hai inserito nel carrello un televisore con le seguenti caratteristiche: ");
-                System.out.println(tv.toString());
+                    Televisore tv = new Televisore(codiceTv, prezzoTv, iva, pollici, isSmartTv);
 
-                break;
+                    System.out.println("Hai inserito nel carrello un televisore con le seguenti caratteristiche: ");
+                    System.out.println(tv.toString());
 
-            case "cuffie":
-                int codiceCuffie = rand.nextInt(50000);
+                    carrello[i] = tv;
+                    break;
 
-                System.out.println("Inserisci prezzo delle cuffie:");
-                BigDecimal prezzoCuffie = in.nextBigDecimal();
-                // consuma \n del tasto invio... per qualche motivo lo fa solo quì
-                in.nextLine();
+                case "cuffie":
+                    int codiceCuffie = rand.nextInt(50000);
 
-                System.out.println("Che colore sono le cuffie?");
-                String colore = in.nextLine();
+                    System.out.println("Inserisci prezzo delle cuffie:");
+                    BigDecimal prezzoCuffie = in.nextBigDecimal();
+                    // consuma \n del tasto invio... per qualche motivo lo fa solo quì
+                    in.nextLine();
 
-                System.out.println("Le cuffie sono cablate o wireless?");
-                String cableOrBt = in.nextLine();
+                    System.out.println("Che colore sono le cuffie?");
+                    String colore = in.nextLine();
 
-                Cuffie cuffie = new Cuffie(codiceCuffie, prezzoCuffie, iva, colore, cableOrBt);
+                    System.out.println("Le cuffie sono cablate o wireless?");
+                    String cableOrBt = in.nextLine();
 
-                System.out.println("Hai inserito nel carrello un paio di cuffie con le seguenti caratteristiche: ");
-                System.out.println(cuffie.toString());
+                    Cuffie cuffie = new Cuffie(codiceCuffie, prezzoCuffie, iva, colore, cableOrBt);
 
-                break;
-            case "smartphone":
-                int codiceSmartphone = rand.nextInt(50000);
-                int imei = rand.nextInt(999999);
-                System.out.println("Inserisci prezzo del telefono:");
-                BigDecimal prezzoSmartphone = in.nextBigDecimal();
-                // consuma \n del tasto invio... ok lo fa anche quì
-                in.nextLine();
+                    System.out.println("Hai inserito nel carrello un paio di cuffie con le seguenti caratteristiche: ");
+                    System.out.println(cuffie.toString());
 
-                System.out.println("Marca telefono? ");
-                String marca = in.nextLine();
-                
-                System.out.println("Modello telefono? ");
-                String nome = in.nextLine();
-                
-                System.out.println("Memoria telefono? ");
-                int memoria = in.nextInt();
+                    carrello[i] = cuffie;
+                    break;
+                case "smartphone":
+                    int codiceSmartphone = rand.nextInt(50000);
+                    int imei = rand.nextInt(999999);
+                    System.out.println("Inserisci prezzo del telefono:");
+                    BigDecimal prezzoSmartphone = in.nextBigDecimal();
+                    // consuma \n del tasto invio... ok lo fa anche quì
+                    in.nextLine();
 
-                Smartphone telefono = new Smartphone(codiceSmartphone, prezzoSmartphone, iva, nome, marca, imei, memoria);
+                    System.out.println("Marca telefono? ");
+                    String marca = in.nextLine();
 
-                System.out.println("Hai inserito nel carrello uno smartphone con le seguenti caratteristiche: ");
-                System.out.println(telefono.toString());
+                    System.out.println("Modello telefono? ");
+                    String nome = in.nextLine();
 
-                break;
-            default:
-                break;
+                    System.out.println("Memoria telefono? ");
+                    int memoria = in.nextInt();
+
+                    Smartphone telefono = new Smartphone(codiceSmartphone, prezzoSmartphone, iva, nome, marca, imei,
+                            memoria);
+
+                    System.out.println("Hai inserito nel carrello uno smartphone con le seguenti caratteristiche: ");
+                    System.out.println(telefono.toString());
+
+                    carrello[i] = telefono;
+                    break;
+                default:
+                    break;
+
+                }
+            in.nextLine();
+
+        }
+        
+        System.out.println("Hai inserito i seguenti oggetti nel carrello");
+
+        for (int i = 0; i < carrello.length; i++) {
+            System.out.println(carrello[i].toString());
         }
 
         in.close();
+
     }
 
 }
