@@ -66,9 +66,13 @@ public class Prodotto {
         return message;
     }
 
-    public void setDiscountedPrice(boolean hasFidelity) {
-        // ottiene il prezzo totale comprensivo di iva
+    public void setPrezzoIvato() {
         this.prezzo = this.prezzo.add(this.prezzo.multiply(this.iva));
+    }
+
+    public void setDiscountedPrice(boolean hasFidelity) {
+        // prezzo con iva 
+        setPrezzoIvato();
         // applica sconto del 2% se l'utente ha una carta fedeltà
         if (hasFidelity) {
             this.prezzo = this.prezzo.subtract(this.prezzo.multiply(new BigDecimal(0.02))).setScale(2, RoundingMode.HALF_EVEN);

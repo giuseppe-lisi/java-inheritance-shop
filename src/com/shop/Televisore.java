@@ -1,6 +1,7 @@
 package com.shop;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Televisore extends Prodotto {
     private float pollici;
@@ -35,5 +36,17 @@ public class Televisore extends Prodotto {
     public String toString() {    
         String message = "#----------#\n" + "Codice prodotto: " + this.codice + "\nPollici: " + this.pollici + "\nÈ una smart tv: " + this.isSmartTv + "\nPrezzo + iva: " + this.prezzo + "\n#----------#"; 
         return message;
+    }
+
+    @Override
+    public void setDiscountedPrice(boolean hasFidelity) {
+        
+        // applica sconto del 10% se non è una smart tv
+        if (this.isSmartTv == false && hasFidelity) {
+            setPrezzoIvato();
+            this.prezzo = this.prezzo.subtract(this.prezzo.multiply(new BigDecimal(0.10))).setScale(2, RoundingMode.HALF_EVEN);
+        } else {
+            super.setDiscountedPrice(hasFidelity);
+        }
     }
 }

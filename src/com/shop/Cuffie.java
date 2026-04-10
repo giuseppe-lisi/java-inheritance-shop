@@ -1,6 +1,7 @@
 package com.shop;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Cuffie extends Prodotto {
     private String colore;
@@ -25,7 +26,7 @@ public class Cuffie extends Prodotto {
 
     public void setCableOrBt(String cableOrBt) {
         String lowerCableBt = cableOrBt.toLowerCase();
-        if (lowerCableBt != null && (lowerCableBt.equals("cavo") || lowerCableBt.equals("bluetooth") || lowerCableBt.equals("entrambi"))) {
+        if (lowerCableBt != null && (lowerCableBt.equals("cavo") || lowerCableBt.equals("bluetooth"))) {
             this.cableOrBt = lowerCableBt;
         }
     }
@@ -36,8 +37,19 @@ public class Cuffie extends Prodotto {
 
     @Override
     public String toString() {    
-        String message = "#----------#" + "\nCodice prodotto: " + this.codice + "\nColore: " + this.colore + "\nConnessione: " + this.cableOrBt + "\nPrezzo + iva: " + this.prezzo.add(this.prezzo.multiply(this.iva)) + "\n#----------#"; 
+        String message = "#----------#" + "\nCodice prodotto: " + this.codice + "\nColore: " + this.colore + "\nConnessione: " + this.cableOrBt + "\nPrezzo + iva: " + this.prezzo + "\n#----------#"; 
         return message;
+    }
+
+    @Override
+    public void setDiscountedPrice(boolean hasFidelity) {
+        // applica sconto del 10% se non è una smart tv
+        if (this.cableOrBt.equals("cavo") && hasFidelity) {
+            setPrezzoIvato();
+            this.prezzo = this.prezzo.subtract(this.prezzo.multiply(new BigDecimal(0.07))).setScale(2, RoundingMode.HALF_EVEN);
+        } else {
+            super.setDiscountedPrice(hasFidelity);
+        }
     }
 }
 

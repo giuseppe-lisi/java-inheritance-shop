@@ -42,11 +42,9 @@ public class Smartphone extends Prodotto {
 
     @Override
     public void setDiscountedPrice(boolean hasFidelity) {
-        // prezzo comprensivo di iva
-        this.prezzo = this.prezzo.add(this.prezzo.multiply(this.iva));
-        // se l'utente ha scelto un telefono con memoria inferiore a 32 gb
-        // e ha la fidelity card
+        // applica sconto del 5% se verificate condizioni
         if (this.memoria <= 32 && hasFidelity) {
+            setPrezzoIvato();
             this.prezzo = this.prezzo.subtract(this.prezzo.multiply(new BigDecimal(0.05))).setScale(2, RoundingMode.HALF_EVEN);
         } else {
             super.setDiscountedPrice(hasFidelity);

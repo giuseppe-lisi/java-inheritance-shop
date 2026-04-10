@@ -20,7 +20,6 @@ public class Carrello {
         // chiede se l'utente ha una carta fedeltà
         System.out.println("Sei in possesso di una carta fedeltà? (y / n)");
         boolean hasFidelity = in.nextLine().equals("y");
-        System.out.println(hasFidelity);
         
         System.out.println("Quanti prodotti devi inserire nel carrello?");
         int itemNum = in.nextInt();
@@ -69,12 +68,13 @@ public class Carrello {
                     System.out.println("Che colore sono le cuffie?");
                     String colore = in.nextLine();
 
-                    System.out.println("Le cuffie sono cablate o wireless?");
+                    System.out.println("Le cuffie sono cablate o wireless? (cavo / bluetooth)");
                     String cableOrBt = in.nextLine();
 
                     Cuffie cuffie = new Cuffie(codiceCuffie, prezzoCuffie, iva, colore, cableOrBt);
 
                     System.out.println("Hai inserito nel carrello un paio di cuffie con le seguenti caratteristiche: ");
+                    cuffie.setDiscountedPrice(hasFidelity);
                     System.out.println(cuffie.toString());
 
                     carrello[i] = cuffie;
