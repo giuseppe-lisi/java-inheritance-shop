@@ -33,7 +33,7 @@ public class Televisore extends Prodotto {
 
     @Override
     public String toString() {    
-        String message = "#----------#\n" + "Codice prodotto: " + this.codice + "\nPollici: " + this.pollici + "\nÈ una smart tv: " + this.isSmartTv + "\nPrezzo + iva: " + this.prezzo.add(this.prezzo.multiply(this.iva)) + "\n#----------#"; 
+        String message = "#----------#\n" + "Codice prodotto: " + this.codice + "\nPollici: " + this.pollici + "\nÈ una smart tv: " + this.isSmartTv + "\nPrezzo + iva: " + this.prezzo + "\n#----------#"; 
         return message;
     }
 }

@@ -35,7 +35,7 @@ public class Smartphone extends Prodotto {
 
     @Override
     public String toString() {    
-        String message = "\n#----------#" + "\nCodice prodotto: " + this.codice + "\nMarca: " + this.marca + "\nModello: " + this.nome + "\nCodice imei: " + this.imei + "\nGb di memoria: " + this.memoria + "\nPrezzo + iva: " + this.prezzo.add(this.prezzo.multiply(this.iva)) + "\n#----------#"; 
+        String message = "\n#----------#" + "\nCodice prodotto: " + this.codice + "\nMarca: " + this.marca + "\nModello: " + this.nome + "\nCodice imei: " + this.imei + "\nGb di memoria: " + this.memoria + "\nPrezzo + iva: " + this.prezzo + "\n#----------#"; 
         return message;
     }
 }

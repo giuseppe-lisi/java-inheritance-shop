@@ -14,9 +14,13 @@ public class Carrello {
         Random rand = new Random();
         Scanner in = new Scanner(System.in);
 
-        
         // iva applicata al 22% su tutto
         BigDecimal iva = new BigDecimal(0.22).setScale(2, RoundingMode.HALF_EVEN);
+
+        // chiede se l'utente ha una carta fedeltà
+        System.out.println("Sei in possesso di una carta fedeltà? (y / n)");
+        boolean hasFidelity = in.nextLine().equals("y");
+        System.out.println(hasFidelity);
         
         System.out.println("Quanti prodotti devi inserire nel carrello?");
         int itemNum = in.nextInt();
@@ -48,6 +52,8 @@ public class Carrello {
                     Televisore tv = new Televisore(codiceTv, prezzoTv, iva, pollici, isSmartTv);
 
                     System.out.println("Hai inserito nel carrello un televisore con le seguenti caratteristiche: ");
+                    System.out.println(tv.getPrezzo());
+                    tv.setDiscountedPrice(hasFidelity);
                     System.out.println(tv.toString());
 
                     carrello[i] = tv;
@@ -107,14 +113,15 @@ public class Carrello {
 
         }
         
+        in.close();
+        
         System.out.println("Hai inserito i seguenti oggetti nel carrello");
 
         for (int i = 0; i < carrello.length; i++) {
             System.out.println(carrello[i].toString());
         }
 
-        in.close();
-
+        
     }
 
 }
