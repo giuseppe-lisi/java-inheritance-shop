@@ -36,7 +36,7 @@ public class Cuffie extends Prodotto {
 
     @Override
     public String toString() {    
-        String message = "Codice prodotto: " + this.codice + "\n Colore: " + this.colore + "\n Connessione: " + this.cableOrBt + "\n#----------#"; 
+        String message = "#----------#" + "\nCodice prodotto: " + this.codice + "\nColore: " + this.colore + "\nConnessione: " + this.cableOrBt + "\nPrezzo + iva: " + this.prezzo.add(this.prezzo.multiply(this.iva)) + "\n#----------#"; 
         return message;
     }
 }
